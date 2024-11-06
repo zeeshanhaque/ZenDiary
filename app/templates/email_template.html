@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenDiary: Monthly Mood Report</title>
+</head>
+<body>
+    <p class="email-para">Your average mood score for the month is: <span class="email-score"></span>{{ average_score }}</p>
+    
+    <h3 class="email-para">Suggestions based on your mood:</h3>
+    <ul>
+        {% for suggestion in suggestions.get(mood_class, []) %}
+            <li class="email-score">{{ suggestion }}</li>
+        {% endfor %}
+    </ul>
+
+    <img src="cid:{{ wordcloud_filename }}" alt="Wordcloud">
+
+
+</body>
+</html>

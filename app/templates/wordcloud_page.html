@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+<div class="container wordcloud">
+    <h2 class="page-title">Word Cloud of things that you were grateful for</h2>
+
+    <div id="wordCloudContainer" class="wordCloudContainer flex">
+        <img src="{{ url_for('main.wordcloud') }}" alt="Word Cloud">
+    </div>
+
+    <div class="add-entry flex">
+        <a class="button" href="{{ url_for('main.add_entry') }}"> + New</a>
+    </div>
+
+    <br>
+</div>
+
+<div class="add-entry flex">
+    <a class="button" href="{{ url_for('main.add_entry') }}"> + New</a>
+</div>
+
+<a class="graph-icon button flex" href="{{ url_for('main.analytics') }}"
+    onmouseover="changeImage('graph-icon', 'hover', 'line-graph')"
+    onmouseout="changeImage('graph-icon', 'normal', 'line-graph')">
+    <img id="graph-icon" src="{{ url_for('static', filename='assets/line-graph.png') }}" alt="">
+</a>
+
+<br>
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Add Mood Entry</title>
+</head>
+
+<body>
+    <div class="flex container add-entry-header">
+        <a class="back-arrow" href="{{ url_for('main.index') }}" onmouseover="changeImage('hover')" onmouseout="changeImage('normal')">
+            <img id="arrow-image" src="{{ url_for('static', filename='assets/left-arrow.png') }}" alt="">
+        </a>
+        <h2 class="mood-entry-heading">New Entry</h1>
+    </div>
+
+    <script>
+        function changeImage(state) {
+            var img = document.getElementById('arrow-image');
+            if (state === 'hover') {
+                img.src = "{{ url_for('static', filename='assets/left-arrow-hover.png') }}";
+            } else {
+                img.src = "{{ url_for('static', filename='assets/left-arrow.png') }}";
+            }
+        }
+    </script>
+
+    <form class="mood-entry-form container flex" method="post" action="{{ url_for('main.add_entry') }}">
+        <div class="emoji-selection flex">
+            <label class="emoji-selection-heading">Current Mood:</label><br>
+            <div class="emoji-set flex">
+                {% set emoji_set = {
+                    1: "😢",
+                    2: "😊",
+                    3: "😄",
+                    4: "😎",
+                    5: "🤩"
+                } %}
+                {% for rating, emoji in emoji_set.items() %}
+                    <input type="radio" name="mood" id="mood{{ rating }}" value="{{ rating }}" onclick="toggleEmojiSize('mood{{ rating }}')" required>
+                    <label for="mood{{ rating }}" class="emoji-label">{{ emoji }}</label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Journal Entry Textarea -->
+        <div class="journal-entries flex">
+            <div>
+                <label for="journal_entry">Journal Entry:</label>
+                <input class="handwriting" type="text" name="journal_entry" id="journal_entry" placeholder="write something..." required>
+            </div>
+
+            <div>
+                <label for="gratitude">I felt Grateful for </label>
+                <input class="handwriting" type="text" name="gratitude" id="gratitude" placeholder="something you were thankful for..." required>
+            </div>
+
+            <div>
+                <label for="agency">I affected the world around me by </label>
+                <input class="handwriting" type="text" name="agency" id="agency" placeholder="asserted influence/ took initiative/ expressed opinion/ accomplished goal" required>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <input class="submit-entry button flex" type="submit" value="Add Entry">
+    </form>
+
+    <br>
+
+    <script>
+        function toggleEmojiSize(emojiId) {
+            const emojiLabel = document.querySelector(`label[for=${emojiId}]`);
+            const allEmojiLabels = document.querySelectorAll('.emoji-label');
+
+            allEmojiLabels.forEach(label => label.classList.remove('selected'));
+            emojiLabel.classList.add('selected');
+        }
+    </script>
+</body>
+
+</html>

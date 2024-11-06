@@ -1,0 +1,13 @@
+flask
+flask-login
+flask-sqlalchemy
+flask-mail
+flask-wtf
+python-dotenv
+pymysql
+apscheduler
+nltk
+wordcloud
+matplotlib
+Pillow
+werkzeug

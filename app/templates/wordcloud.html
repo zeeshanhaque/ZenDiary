@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h1 class="homepage-zendiary">ZenDiary</h1>
+
+<script>
+    function changeImage(imgId, state, filename) {
+        var img = document.getElementById(imgId);
+        if (state === 'hover') {
+            img.src = "/static/assets/" + filename + "-hover.png";
+        } else {
+            img.src = "/static/assets/" + filename + ".png";
+        }
+    }
+</script>
+
+<div class="flex container homepage-header">
+    <p>Hello, {{ current_user.username }}!</p>
+    <a class="logout-icon button flex" href="{{ url_for('main.logout') }}"
+        onmouseover="changeImage('logout-icon', 'hover', 'logout')"
+        onmouseout="changeImage('logout-icon', 'normal', 'logout')">
+        <img id="logout-icon" src="/static/assets/logout.png" alt="">
+    </a>
+</div>
+
+<div class="container wordcloud">
+    <h2>Word Cloud</h2>
+
+    <div class="flex container homepage-header">
+        <p>Hello, {{ current_user.username }}!</p>
+        <a class="logout-icon button flex" href="{{ url_for('main.logout') }}"
+            onmouseover="changeImage('logout-icon', 'hover', 'logout')"
+            onmouseout="changeImage('logout-icon', 'normal', 'logout')">
+            <img id="logout-icon" src="{{ url_for('static', filename='assets/logout.png') }}" alt="">
+        </a>
+    </div>
+
+    <div class="container entries">
+        <h2>Word Cloud</h2>
+
+        <div id="wordCloudContainer" style=" height: 400px;">
+            <img src="{{ url_for('main.get_wordcloud') }}" alt="Word Cloud">
+        </div>
+
+        <div class="add-entry flex">
+            <a class="button" href="{{ url_for('main.add_entry') }}"> + New</a>
+        </div>
+
+        <a class="graph-icon button flex" href="{{ url_for('main.analytics') }}"
+            onmouseover="changeImage('graph-icon', 'hover', 'line-graph')"
+            onmouseout="changeImage('graph-icon', 'normal', 'line-graph')">
+            <img id="graph-icon" src="{{ url_for('static', filename='assets/line-graph.png') }}" alt="">
+        </a>
+
+        <a class="cloud-icon button flex" href="{{ url_for('main.get_wordcloud') }}"
+            onmouseover="changeImage('cloud-icon', 'hover', 'cloud')"
+            onmouseout="changeImage('cloud-icon', 'normal', 'cloud')">
+            <img id="cloud-icon" src="{{ url_for('static', filename='assets/cloud.png') }}" alt="">
+        </a>
+        <br>
+    </div>
+
+    <div class="add-entry flex">
+        <a class="button" href="{{ url_for('main.add_entry') }}"> + New</a>
+    </div>
+    
+    <a class="list-icon button flex" href="{{ url_for('main.index') }}"
+        onmouseover="changeImage('list-icon', 'hover', 'list')" onmouseout="changeImage('list-icon', 'normal', 'list')">
+        <img id="list-icon" src="/static/assets/list.png" alt="">
+    </a>
+    <br>
+</div>
+
+<!-- Include the JavaScript code to fetch and display the Word Cloud image -->
+<script>
+    const initWordCloud = () => {
+        fetch('/get_wordcloud', { method: 'POST' })
+            .then(response => {
+                console.log('Response:', response);
+                return response.blob();
+            })
+            .then(blob => {
+                console.log('Blob:', blob);
+                const url = URL.createObjectURL(blob);
+                document.getElementById('wordCloudContainer').innerHTML = `<img src="${url}" alt="Word Cloud">`;
+            })
+            .catch(error => console.error('Error fetching word cloud:', error));
+    };
+
+    // Call the initWordCloud function when the page loads
+    document.addEventListener('DOMContentLoaded', initWordCloud);
+</script>
+
+{% endblock %}
