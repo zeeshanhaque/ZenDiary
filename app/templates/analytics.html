@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container entries">
+    <h2 class="page-title">Analytics</h2>
+
+    <div class="analytics-main flex">
+        <div id="moodChart"></div>
+    </div>
+
+    <script>
+        window.moodValues = {{ mood_entries | map(attribute='mood') | map('int') | list | tojson | safe }};
+        window.timeCategories = {{ formatted_timestamps | tojson | safe }};
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="{{ url_for('static', filename='js/moodChart.js') }}"></script>
+
+    <div class="average-score flex">
+        <span>Mood Score for the Month: &nbsp;</span>
+        <span class="avg-score" style="background-color: {{ mood_background_color }}">
+            {{ average_monthly_mood if average_monthly_mood is not none else 'N/A' }}
+        </span>
+    </div>
+
+    <div class="suggestions">
+        <ul>
+            {% for suggestion in styled_suggestions %}
+                <li class="flex" style="background-color: {{ suggestion.color }}; width: {{ suggestion.width }}px">
+                    {{ suggestion.text }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="add-entry flex">
+        <a class="button" href="{{ url_for('main.add_entry') }}">+ New</a>
+    </div>
+    
+    <a class="cloud-icon-analytics button flex" 
+       href="{{ url_for('main.wordcloud_page') }}"
+       onmouseover="changeImage('cloud-icon', 'hover', 'cloud')"
+       onmouseout="changeImage('cloud-icon', 'normal', 'cloud')">
+        <img id="cloud-icon" src="{{ url_for('static', filename='assets/cloud.png') }}" alt="Word Cloud">
+    </a>
+</div>
+{% endblock %}

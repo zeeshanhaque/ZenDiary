@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&family=Teko&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta&family=Patrick+Hand&family=Teko&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta&family=Patrick+Hand&family=Teko&family=Titan+One&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Mukta', sans-serif;
+}
+
+:root {
+    --zendiary-beige: #DDC3A5;
+    --zendiary-black-brown: #201E20;
+    --zendiary-tan: #E0A96D;
+    --zendiary-island-green: #2BAE66;
+    --zendiary-handwriting: 'Patrick Hand', cursive;
+}
+
+body {
+    background-color: var(--zendiary-black-brown);
+    color: var(--zendiary-beige);
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.container {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.handwriting {
+    font-family: var(--zendiary-handwriting);
+    color: blue;
+    font-size: 18px;
+    background-color: rgb(200, 200, 200);
+}
+
+.button {
+    color: var(--zendiary-beige);
+    border: 3px solid var(--zendiary-tan);
+    border-radius: 25px;
+    padding-inline: 10px;
+    font-size: 26px;
+    font-weight: bold;
+    align-items: center;
+    background-color: var(--zendiary-black-brown);
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--zendiary-tan);
+    color: var(--zendiary-black-brown);
+}
+
+.page-title {
+    padding-left: 20px;
+}
+
+
+/* LOGIN */
+.login-form {
+    font-size: 24px;
+    width: 460px;
+    margin: 20vh auto;
+    padding: 40px;
+    border: 2px solid var(--zendiary-tan);
+    border-radius: 6px;
+}
+
+.signup-form {
+    margin: 10vh auto;
+}
+
+.login-header {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.authentication-links:hover {
+    color: var(--zendiary-island-green);
+}
+
+.login-form-field {
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.login-form-field input {
+    width: 200px;
+    padding-inline: 10px;
+    font-size: 22px;
+    height: 34px;
+}
+
+.login-button {
+    margin-top: 30px;
+    font-size: 26px;
+    width:  -moz-available;
+    height: 46px;
+}
+
+.login-existing {
+    margin-top: 10px;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.alert-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+
+/* LAYOUT */
+.greeting {
+    font-family: 'Titan One', 'Mukta';
+    color: #a5d1e7;
+}
+
+
+
+/* HOMEPAGE */
+.homepage-zendiary{
+    margin-block: 10px 0px;
+    text-align: center;
+    
+}
+
+.homepage-zendiary a img{
+    display: inline-block;
+    width: 200px;
+}
+
+.homepage-header {
+    font-size: 26px;
+    justify-content: space-between;
+    align-items: center;
+    height: 54px;
+}
+
+.user-profile-dropdown {
+    width: 60px;
+}
+
+.dropdown {
+    display: none;
+}
+
+.show {
+    display: inline;
+}
+
+.profile-photo {
+    width: 40px;
+}
+
+.logout-icon {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+}
+
+#logout-icon {
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+}
+
+.add-entry {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding-inline: 10px;
+    font-size: 26px;
+    align-items: center;
+}
+.graph {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    padding-inline: 10px;
+    font-size: 26px;
+    align-items: center;
+}
+
+
+.add-entry span {
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+
+.entry {
+    border-radius: 25px;
+    margin-bottom: 10px;
+    padding-inline: 30px;
+    padding-block: 10px 20px;
+    background-color: rgb(50, 50, 50);
+}
+
+.timestamp {
+    color: var(--zendiary-island-green);
+}
+
+.entry-main {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mood-emoji {
+    font-size: 66px;
+}
+
+.journal-entry {
+    height: 100px;
+    width: 180px;
+    overflow: scroll;
+    border-radius: 10px;
+    padding-inline: 10px;
+    padding-block: 6px;
+}
+
+
+
+/* ADD ENTRY */
+.add-entry-header {
+    align-items: center;
+}
+.mood-entry-heading{
+    margin: 20px auto;
+    text-align: center;
+}
+
+.mood-entry-form {
+    flex-direction: column;
+}
+.emoji-selection {
+    flex-direction: column;
+}
+
+.emoji-selection-heading {
+    font-size: 26px;
+    height: 30px;
+}
+
+.emoji-set {
+    justify-content: space-around;
+    height: 110px;
+    align-items: center;
+}
+
+.emoji-label {
+    font-size: 54px;
+    cursor: pointer;
+    transition: font-size 0.2s;
+}
+
+.emoji-label.selected {
+    font-size: 68px;
+}
+
+.emoji-set input {
+    display: none;
+}
+
+.journal-entries {
+    flex-direction: column;
+    row-gap: 26px;
+}
+
+.journal-entries label {
+    font-size: 26px;
+}
+
+.journal-entries input {
+    width: -moz-available;
+    height: 40px;
+    margin-left: 12px;
+    padding-left: 12px;
+    border: none;
+}
+
+.submit-entry {
+    margin-top: 40px;
+    margin-inline: 20px;
+    text-align: center;
+    height: 48px;
+    padding-bottom: 4px;
+    align-items: center ;
+    font-size: 26px;
+}
+
+.back-arrow {
+    display: flex;
+    width: 40px;
+    height: 40px;
+}
+
+
+/* ANALYTICS */
+.analytics-main {
+    justify-content: center;
+}
+
+.average-score {
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.avg-score {
+    color: black;
+    border: 2px solid black;
+    font-size: 36px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    height: 56px;
+    font-family: 'Titan One', 'Mukta', 'sans-serif';
+}
+
+.suggestions li {
+    list-style: none;
+    height: 80px;
+    padding: 10px;
+    color: black;
+    margin-block: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 24px;
+    align-items: center;
+    font-family: 'Titan One', 'Mukta';
+}
+
+.list-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 140px;
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+    justify-content: center;
+}
+
+#list-icon {
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+}
+
+.graph-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 140px;
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+    justify-content: center;
+}
+
+#graph-icon {
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+}
+
+.cloud-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 200px;
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+    justify-content: center;
+}
+
+#cloud-icon {
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+}
+
+.cloud-icon-analytics {
+    position: fixed;
+    bottom: 20px;
+    right: 140px;
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+    justify-content: center;
+}
+
+.apexcharts-text tspan {
+    font-size: 26px;
+}
+
+.apexcharts-xaxis-label {
+    font-size: 10px;
+}
+
+.wordCloudContainer {
+    background: var(--background-color);
+    height: 420px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wordCloudContainer img {
+    transition: all 0.25s ease-in-out;
+    border-radius: 400px;
+    box-shadow: 0 0 8px 8px #fff;
+}
+
+
+/* EMAIL */
+.email-para {
+    font-family: 'Mukta';
+}
+
+.email-score {
+    font-family: 'Teko One';
+}

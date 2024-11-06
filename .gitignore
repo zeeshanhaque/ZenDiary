@@ -1,0 +1,16 @@
+# Python files
+*.pyc
+app/__pycache__/
+
+# Virtual environment
+.env
+
+# Flask settings
+instance/
+*.log
+
+# IDE files
+.vscode/
+
+# Profile Pictures
+app/static/uploads

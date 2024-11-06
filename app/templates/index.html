@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+<div class="container entries">
+    <h2 class="page-title">Entries</h2>
+    {% if mood_entries %}
+        {% for entry in mood_entries %}
+            <div class="entry">
+                <p class="timestamp"><strong>{{ entry.timestamp.strftime('%B %d, %Y · %I:%M %p') }}</strong></p>
+                <div class="flex entry-main">
+                    {% set emoji_set = {
+                        1: "😢",
+                        2: "😊",
+                        3: "😄",
+                        4: "😎",
+                        5: "🤩"
+                    } %}
+                    
+                    {% if entry.mood|int in emoji_set %}
+                        <div class="mood-emoji">{{ emoji_set[entry.mood|int] }}</div>
+                    {% else %}
+                        <div class="mood-emoji">Invalid Mood</div>
+                    {% endif %}
+
+                    <div><strong>Journal Entry:</strong>
+                        <p class="journal-entry handwriting">{{ entry.journal_entry }}</p>
+                    </div>
+                    <div>I felt Grateful for... <p class="journal-entry handwriting">{{ entry.gratitude }}</p>
+                    </div>
+                    <div>I affected the world around me by...<p class="journal-entry handwriting">{{ entry.agency }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="flex entry">
+            <div class="timestamp entry-main">No Entries. Go Ahead and Add One!</div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="add-entry flex">
+    <a class="button" href="{{ url_for('main.add_entry') }}"> + New</a>
+</div>
+
+<a class="graph-icon button flex" href="{{ url_for('main.analytics') }}" onmouseover="changeImage('graph-icon', 'hover', 'line-graph')"
+        onmouseout="changeImage('graph-icon', 'normal', 'line-graph')">
+    <img id="graph-icon" src="{{ url_for('static', filename='assets/line-graph.png') }}" alt="">
+</a>
+
+<a class="cloud-icon button flex" href="{{ url_for('main.wordcloud_page') }}" onmouseover="changeImage('cloud-icon', 'hover', 'cloud')"
+        onmouseout="changeImage('cloud-icon', 'normal', 'cloud')">
+    <img id="cloud-icon" src="{{ url_for('static', filename='assets/cloud.png') }}" alt="">
+</a>
+<br>
+
+{% endblock %}
