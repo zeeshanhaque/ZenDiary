@@ -21,12 +21,20 @@ document.addEventListener('DOMContentLoaded', function () {
             yaxis: {
                 labels: {
                     formatter: function (value) {
-                        if (value === 1) return '😢';
-                        if (value === 2) return '😊';
-                        if (value === 3) return '😄';
-                        if (value === 4) return '😎';
-                        if (value === 5) return '🤩';
-                        return '';
+                        switch (value) {
+                            case 1:
+                                return '😢';
+                            case 2:
+                                return '😐';
+                            case 3:
+                                return '😊';
+                            case 4:
+                                return '😄';
+                            case 5:
+                                return '😍';
+                            default:
+                                return '';
+                        }
                     }
                 },
                 tickAmount: 5
@@ -39,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 enabled: true
             }
         };
-
         var moodChart = new ApexCharts(document.querySelector("#moodChart"), moodData);
         moodChart.render();
     } else {

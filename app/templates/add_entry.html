@@ -28,16 +28,10 @@
     </script>
 
     <form class="mood-entry-form container flex" method="post" action="{{ url_for('main.add_entry') }}">
+        {{ form.csrf_token }}
         <div class="emoji-selection flex">
             <label class="emoji-selection-heading">Current Mood:</label><br>
             <div class="emoji-set flex">
-                {% set emoji_set = {
-                    1: "😢",
-                    2: "😊",
-                    3: "😄",
-                    4: "😎",
-                    5: "🤩"
-                } %}
                 {% for rating, emoji in emoji_set.items() %}
                     <input type="radio" name="mood" id="mood{{ rating }}" value="{{ rating }}" onclick="toggleEmojiSize('mood{{ rating }}')" required>
                     <label for="mood{{ rating }}" class="emoji-label">{{ emoji }}</label>

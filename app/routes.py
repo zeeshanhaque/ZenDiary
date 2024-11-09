@@ -100,19 +100,20 @@ def logout():
     return redirect(url_for("main.login"))
 
 
+
 @main.route("/add_entry", methods=["GET", "POST"])
 @login_required
 def add_entry():
     """Route for adding new mood entries."""
     form = MoodEntryForm()
-    if request.method == "POST":
+    if form.validate_on_submit():
         try:
             indian_time = datetime.utcnow() + timedelta(hours=5, minutes=30)
             new_entry = MoodEntry(
-                mood=request.form.get('mood'),
-                journal_entry=request.form.get('journal_entry'),
-                gratitude=request.form.get('gratitude'),
-                agency=request.form.get('agency'),
+                mood=form.mood.data,
+                journal_entry=form.journal_entry.data,
+                gratitude=form.gratitude.data,
+                agency=form.agency.data,
                 user=current_user,
                 timestamp=indian_time,
             )
@@ -123,8 +124,7 @@ def add_entry():
         except Exception as e:
             db.session.rollback()
             flash(f"Error adding entry: {str(e)}", "danger")
-
-    return render_template("add_entry.html", form=form)
+    return render_template("add_entry.html", form=form, emoji_set=emoji_set)
 
 
 @main.route('/analytics')
