@@ -23,7 +23,7 @@ A comprehensive Flask-based web application that enables users to track and anal
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/zendiary.git
+   git clone https://github.com/zeeshanhaque/zendiary.git
    ```
 
 2. Create a virtual environment and activate it:
