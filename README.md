@@ -59,22 +59,22 @@ A comprehensive Flask-based web application that enables users to track and anal
 ## Screenshots
 
 1. **Login Page**:
-   ![Login Page](app/static/assets/screenshots/login.pn)
+   ![Login Page](app/static/assets/screenshots/login.png)
 
 2. **Registration Page**:
-   ![Registration Page](app/static/assets/screenshots/register.pn)
+   ![Registration Page](app/static/assets/screenshots/register.png)
 
 3. **Home Page**:
-   ![Home Page](app/static/assets/screenshots/home.pn)
+   ![Home Page](app/static/assets/screenshots/home.png)
 
 3. **New Entry**:
-   ![New Entry](app/static/assets/screenshots/new-entry.pn)
+   ![New Entry](app/static/assets/screenshots/new-entry.png)
 
 5. **Analytics Page**:
-   ![Analytics Page](app/static/assets/screenshots/analytics.pn)
+   ![Analytics Page](app/static/assets/screenshots/analytics.png)
 
 6. **Word Cloud Page**:
-   ![Word Cloud Page](app/static/assets/screenshots/wordcloud.pn)
+   ![Word Cloud Page](app/static/assets/screenshots/wordcloud.png)
 
 ## Contributing
 
